@@ -36,6 +36,56 @@ class LinkedList {
   getFirst() {
     return this.head;
   }
+
+  getLast2() {
+    let currentNode = this.head;
+    while (currentNode && currentNode.next) {
+      currentNode = currentNode.next;
+    }
+    return currentNode;
+  }
+
+  getLast() {
+    if (!this.head) {
+      return null;
+    }
+
+    let currentNode = this.head;
+    while (currentNode.next) {
+      currentNode = currentNode.next;
+    }
+    return currentNode;
+  }
+
+  clear() {
+    this.head = null;
+  }
+
+  removeFirst() {
+    if (!this.head) {
+      return;
+    }
+    this.head = this.head.next;
+  }
+
+  removeLast() {
+    if (!this.head) {
+      return;
+    }
+    if (!this.head.next) {
+      this.head = null;
+      return;
+    }
+
+    let currentNode = this.head;
+    let nextNode = this.head.next;
+    while (nextNode.next) {
+      currentNode = nextNode;
+      nextNode = nextNode.next;
+    }
+
+    currentNode.next = null;
+  }
 }
 
 module.exports = { Node, LinkedList };
